@@ -1,0 +1,34 @@
+.result_wrapper {
+    width: 500px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.absolute {
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: unset;
+    margin: auto;
+}
+
+.podium {
+    bottom: 70px;
+    z-index: 2;
+}
+
+.arch {
+    z-index: 3;
+    top: 0;
+    bottom: 0;
+}
+
+.road {
+    z-index: 1;
+    bottom: 0;
+}
+
+.flowersRoad {
+    z-index: 4;
+    bottom: 0;
+}
