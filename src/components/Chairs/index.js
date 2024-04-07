@@ -12,12 +12,8 @@ const Chairs = () => {
       <h2>Выберите стулья</h2>
       <div className="items-small">
         {DECOR.CHAIRS.map((el) => (
-          <div key={el.id}>
-            <img
-              src={el.src}
-              alt={el.id}
-              onClick={() => setState({ ...state, chairs: el })}
-            />
+          <div key={el.id} onClick={() => setState({ ...state, chairs: el })}>
+            <img src={el.src} alt={el.id} />
           </div>
         ))}
       </div>

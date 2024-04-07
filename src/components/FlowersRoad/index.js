@@ -1,7 +1,8 @@
 import { useContext } from "react";
 import { AppContext } from "../../store/AppContext.js";
-import { CHAIRS, DECOR } from "../../constants.js";
+import { DECOR } from "../../constants.js";
 import Result from "../Result";
+import { getStep } from "../../utils.js";
 
 const FlowersRoad = () => {
   const { state, setState } = useContext(AppContext);
@@ -15,18 +16,17 @@ const FlowersRoad = () => {
           Без цветов
         </div>
         {DECOR.FLOWERS_ROAD.map((el) => (
-          <div key={el.id}>
-            <img
-              src={el.src}
-              alt={el.id}
-              onClick={() => setState({ ...state, flowersRoad: el })}
-            />
+          <div
+            key={el.id}
+            onClick={() => setState({ ...state, flowersRoad: el })}
+          >
+            <img src={el.src} alt={el.id} />
           </div>
         ))}
       </div>
       <button
         className="next_btn"
-        onClick={() => setState({ ...state, step: CHAIRS })}
+        onClick={() => setState({ ...state, step: getStep(state) })}
       >
         Следующий шаг
       </button>

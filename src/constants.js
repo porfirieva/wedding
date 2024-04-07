@@ -13,7 +13,6 @@ const POWDERY = "POWDERY";
 const WHITE = "WHITE";
 const TRANSPARENT = "TRANSPARENT";
 
-//locations
 const SEASONS_UP = "SESONS_UP";
 const SEASONS_DOWN = "SESONS_DOWN";
 const HVOYA_SEA = "HVOYA_SEA";
@@ -44,19 +43,45 @@ export const DECOR = {
 export const LOCATIONS = [
   {
     id: SEASONS_UP,
-    steps: [ARCH, PODIUM, FLOWERS_ARCH, ROAD, FLOWERS_ROAD, CHAIRS],
+    steps: [
+      START_PAGE,
+      LOCATION,
+      ARCH,
+      PODIUM,
+      FLOWERS_ARCH,
+      ROAD,
+      FLOWERS_ROAD,
+      CHAIRS,
+    ],
     src: "./location_SeasonsUp.png",
     title: "Времена года. Верхняя.",
   },
   {
     id: SEASONS_DOWN,
-    steps: [PODIUM, FLOWERS_ARCH, ROAD, FLOWERS_ROAD, CHAIRS],
+    steps: [
+      START_PAGE,
+      LOCATION,
+      PODIUM,
+      FLOWERS_ARCH,
+      ROAD,
+      FLOWERS_ROAD,
+      CHAIRS,
+    ],
     src: "./location_SeasonsDown.png",
     title: "Времена года. Нижняя.",
   },
   {
     id: HVOYA_SEA,
-    steps: [ARCH, PODIUM, FLOWERS_ARCH, ROAD, FLOWERS_ROAD, CHAIRS],
+    steps: [
+      START_PAGE,
+      LOCATION,
+      ARCH,
+      PODIUM,
+      FLOWERS_ARCH,
+      ROAD,
+      FLOWERS_ROAD,
+      CHAIRS,
+    ],
     src: "./location_HvoyaSea.png",
     title: "Хвоя",
   },

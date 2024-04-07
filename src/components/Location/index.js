@@ -1,10 +1,21 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AppContext } from "../../store/AppContext";
-import { LOCATIONS, PODIUM } from "../../constants";
+import { LOCATIONS } from "../../constants";
 import s from "./style.module.scss";
 
 const Location = () => {
   const { state, setState } = useContext(AppContext);
+  useEffect(() => {
+    setState({
+      ...state,
+      arch: null,
+      chairs: null,
+      flowersArch: null,
+      flowersRoad: null,
+      podium: null,
+      road: null,
+    });
+  }, []);
 
   return (
     <div className={s.container}>
@@ -20,7 +31,10 @@ const Location = () => {
                 setState({
                   ...state,
                   location: el,
-                  step: PODIUM,
+                  step: {
+                    name: el.steps[state.step.number + 1],
+                    number: state.step.number + 1,
+                  },
                 })
               }
             >

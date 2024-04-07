@@ -4,7 +4,7 @@ import Location from "./components/Location";
 import { AppContext } from "./store/AppContext";
 import StartPage from "./components/StartPage";
 import ReturnButton from "./components/ReturnButton";
-import Header from "./components/Header";
+import Header from "./components/Header/Header";
 import FlowersArch from "./components/FlowersArch";
 import {
   ARCH,
@@ -24,23 +24,25 @@ import Chairs from "./components/Chairs";
 import Podium from "./components/Podium";
 
 function App() {
-  const [state, setState] = useState({ step: START_PAGE });
+  const [state, setState] = useState({ step: { name: START_PAGE, number: 0 } });
+
+  const step = state.step.name;
 
   return (
     <div className="container">
       <Header />
       <h1 className="text">Создай свой идеальный декор</h1>
-      {state.step === START_PAGE && <Hero />}
+      {step === START_PAGE && <Hero />}
       <AppContext.Provider value={{ state, setState }}>
-        {state.step !== START_PAGE && <ReturnButton />}
-        {state.step === START_PAGE && <StartPage />}
-        {state.step === LOCATION && <Location />}
-        {state.step === PODIUM && <Podium />}
-        {state.step === ARCH && <Arch />}
-        {state.step === FLOWERS_ARCH && <FlowersArch />}
-        {state.step === ROAD && <Road />}
-        {state.step === FLOWERS_ROAD && <FlowersRoad />}
-        {state.step === CHAIRS && <Chairs />}
+        {step !== START_PAGE && <ReturnButton />}
+        {step === START_PAGE && <StartPage />}
+        {step === LOCATION && <Location />}
+        {step === PODIUM && <Podium />}
+        {step === ARCH && <Arch />}
+        {step === FLOWERS_ARCH && <FlowersArch />}
+        {step === ROAD && <Road />}
+        {step === FLOWERS_ROAD && <FlowersRoad />}
+        {step === CHAIRS && <Chairs />}
       </AppContext.Provider>
     </div>
   );
