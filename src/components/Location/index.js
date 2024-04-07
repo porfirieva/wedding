@@ -5,6 +5,7 @@ import s from "./style.module.scss";
 
 const Location = () => {
   const { state, setState } = useContext(AppContext);
+
   useEffect(() => {
     setState({
       ...state,
@@ -31,10 +32,7 @@ const Location = () => {
                 setState({
                   ...state,
                   location: el,
-                  step: {
-                    name: el.steps[state.step.number + 1],
-                    number: state.step.number + 1,
-                  },
+                  step: el.steps[state.step.number + 1],
                 })
               }
             >

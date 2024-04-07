@@ -1,12 +1,14 @@
 import { useContext } from "react";
 import { AppContext } from "../../store/AppContext.js";
-import { DECOR } from "../../constants.js";
+import { FLOWERS_ARCH } from "../../constants.js";
 import Result from "../Result";
 import { getStep } from "../../utils.js";
 
 const FlowersArch = () => {
   const { state, setState } = useContext(AppContext);
-  console.log(state);
+  const flowers = state.location.steps.find(
+    (el) => el.name === FLOWERS_ARCH
+  ).images;
 
   return (
     <div className="section">
@@ -16,7 +18,7 @@ const FlowersArch = () => {
         <div onClick={() => setState({ ...state, flowersArch: null })}>
           Без цветов
         </div>
-        {DECOR.FLOWERS_ARCH.map((el) => (
+        {flowers.map((el) => (
           <div
             key={el.id}
             onClick={() => setState({ ...state, flowersArch: el })}

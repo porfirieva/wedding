@@ -1,11 +1,12 @@
 import { useContext } from "react";
 import { AppContext } from "../../store/AppContext.js";
-import { DECOR } from "../../constants.js";
+import { ARCH } from "../../constants.js";
 import Result from "../Result";
 import { getStep } from "../../utils.js";
 
 const Arch = () => {
   const { state, setState } = useContext(AppContext);
+  const archs = state.location.steps.find((el) => el.name === ARCH).images;
 
   return (
     <div className="section">
@@ -13,7 +14,7 @@ const Arch = () => {
       <h2>Выберите арку</h2>
       <div className="items-small">
         <div onClick={() => setState({ ...state, arch: null })}>Без арки</div>
-        {DECOR.ARCH.map((el) => (
+        {archs.map((el) => (
           <div key={el.id} onClick={() => setState({ ...state, arch: el })}>
             <img src={el.src} alt={el.id} />
           </div>

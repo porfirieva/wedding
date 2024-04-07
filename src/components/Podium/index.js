@@ -1,12 +1,12 @@
 import { useContext } from "react";
 import { AppContext } from "../../store/AppContext.js";
-import { DECOR } from "../../constants.js";
+import { PODIUM } from "../../constants.js";
 import Result from "../Result";
 import { getStep } from "../../utils.js";
 
 const Podium = () => {
   const { state, setState } = useContext(AppContext);
-  console.log(state);
+  const podium = state.location.steps.find((el) => el.name === PODIUM).images;
 
   return (
     <div className="section">
@@ -16,7 +16,7 @@ const Podium = () => {
         <div onClick={() => setState({ ...state, podium: null })}>
           Без подиума
         </div>
-        {DECOR.PODIUM.map((el) => (
+        {podium.map((el) => (
           <div key={el.id} onClick={() => setState({ ...state, podium: el })}>
             <img src={el.src} alt={el.id} />
           </div>
