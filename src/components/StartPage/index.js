@@ -1,18 +1,16 @@
 import { useContext } from "react";
 import { AppContext } from "../../store/AppContext";
 import s from "./style.module.scss";
-import { LOCATION } from "../../constants";
+import { LOCATION } from "../../store/constants";
 
 const StartPage = () => {
-  const { state, setState } = useContext(AppContext);
+  const { setState } = useContext(AppContext);
 
   return (
     <div>
       <button
         className={s.button}
-        onClick={() =>
-          setState({ ...state, step: { name: LOCATION, number: 1 } })
-        }
+        onClick={() => setState({ stepName: LOCATION, step: 1 })}
       >
         Собрать площадку
       </button>

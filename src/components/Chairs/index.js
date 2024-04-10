@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { AppContext } from "../../store/AppContext.js";
-import { DECOR } from "../../constants.js";
+import { DECOR } from "../../store/constants.js";
 import Result from "../Result/index.js";
 
 const Chairs = () => {

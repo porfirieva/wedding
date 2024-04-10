@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import { AppContext } from "../../store/AppContext.js";
-import { DECOR } from "../../constants.js";
+import { DECOR } from "../../store/constants.js";
 import Result from "../Result";
-import { getStep } from "../../utils.js";
+import { getStep } from "../utils.js";
 
 const FlowersRoad = () => {
   const { state, setState } = useContext(AppContext);
@@ -26,7 +26,7 @@ const FlowersRoad = () => {
       </div>
       <button
         className="next_btn"
-        onClick={() => setState({ ...state, step: getStep(state) })}
+        onClick={() => setState({ ...state, ...getStep(state) })}
       >
         Следующий шаг
       </button>

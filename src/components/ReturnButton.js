@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { AppContext } from "../store/AppContext";
-import { getStep } from "../utils";
+import { getStep } from "./utils";
 
 const ReturnButton = () => {
   const { state, setState } = useContext(AppContext);
@@ -11,10 +11,7 @@ const ReturnButton = () => {
         onClick={() =>
           setState({
             ...state,
-            step: {
-              name: state.location.steps[state.step.number - 1],
-              number: state.step.number - 1,
-            },
+            ...getStep(state, -1),
           })
         }
       >

@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import { AppContext } from "../../store/AppContext.js";
-import { FLOWERS_ARCH } from "../../constants.js";
+import { FLOWERS_ARCH } from "../../store/constants.js";
 import Result from "../Result";
-import { getStep } from "../../utils.js";
+import { getStep } from "../utils.js";
 
 const FlowersArch = () => {
   const { state, setState } = useContext(AppContext);
@@ -29,7 +29,7 @@ const FlowersArch = () => {
       </div>
       <button
         className="next_btn"
-        onClick={() => setState({ ...state, step: getStep(state) })}
+        onClick={() => setState({ ...state, ...getStep(state) })}
       >
         Следующий шаг
       </button>

@@ -1,6 +1,6 @@
 import { useContext, useEffect } from "react";
 import { AppContext } from "../../store/AppContext";
-import { LOCATIONS } from "../../constants";
+import { LOCATIONS } from "../../store/constants";
 import s from "./style.module.scss";
 
 const Location = () => {
@@ -16,7 +16,7 @@ const Location = () => {
       podium: null,
       road: null,
     });
-  }, []);
+  }, []); // eslint-disable-line
 
   return (
     <div className={s.container}>
@@ -32,7 +32,8 @@ const Location = () => {
                 setState({
                   ...state,
                   location: el,
-                  step: el.steps[state.step.number + 1],
+                  step: el.steps[state.step + 1].step,
+                  stepName: el.steps[state.step + 1].name,
                 })
               }
             >

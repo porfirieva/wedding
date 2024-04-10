@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import { AppContext } from "../../store/AppContext.js";
-import { ARCH } from "../../constants.js";
+import { ARCH } from "../../store/constants.js";
 import Result from "../Result";
-import { getStep } from "../../utils.js";
+import { getStep } from "../utils.js";
 
 const Arch = () => {
   const { state, setState } = useContext(AppContext);
@@ -25,7 +25,7 @@ const Arch = () => {
         onClick={() =>
           setState({
             ...state,
-            step: getStep(state),
+            ...getStep(state),
           })
         }
       >

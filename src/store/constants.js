@@ -15,6 +15,7 @@ const TRANSPARENT = "TRANSPARENT";
 
 const SEASONS_UP = "SESONS_UP";
 const SEASONS_DOWN = "SESONS_DOWN";
+const SEASONS_RESTAURANT = "SEASONS_RESTAURANT";
 const HVOYA_SEA = "HVOYA_SEA";
 
 export const DECOR = {
@@ -23,6 +24,11 @@ export const DECOR = {
   FLOWERS_ARCH: [
     { id: POWDERY, src: "./flowers_arch_powdery.png" },
     { id: WHITE, src: "./flowers_arch_white.png" },
+  ],
+
+  FLOWERS_ARCH_BIG: [
+    { id: POWDERY, src: "./flowers_arch_big_powdery.png" },
+    { id: WHITE, src: "./flowers_arch_big_white.png" },
   ],
 
   ROAD: [{ id: WHITE, src: "./road_white.png" }],
@@ -43,81 +49,64 @@ export const DECOR = {
 export const LOCATIONS = [
   {
     id: SEASONS_UP,
-    src: "./location_SeasonsUp.png",
     title: "Времена года. Верхняя.",
-    // steps: {
-    //   START_PAGE: { step: 1 },
-    //   LOCATION: { step: 2 },
-    //   ARCH: { step: 3, images: DECOR.ARCH },
-    //   PODIUM: { step: 4, images: DECOR.PODIUM },
-    //   FLOWERS_ARCH: {
-    //     step: 5,
-    //     images: [
-    //       { id: POWDERY, src: "./flowers_arch_powdery.png" },
-    //       { id: WHITE, src: "./flowers_arch_white.png" },
-    //     ],
-    //   },
-    // },
     steps: [
-      { name: START_PAGE, number: 0 },
-      { name: LOCATION, number: 1 },
-      { name: ARCH, number: 2, images: DECOR.ARCH },
-      { name: PODIUM, number: 3, images: DECOR.PODIUM },
-      {
-        name: FLOWERS_ARCH,
-        number: 4,
-        images: [
-          { id: POWDERY, src: "./flowers_arch_powdery.png" },
-          { id: WHITE, src: "./flowers_arch_white.png" },
-        ],
-      },
-      { name: FLOWERS_ROAD, step: 5, images: DECOR.FLOWERS_ROAD },
-      { name: ROAD, step: 6, images: DECOR.ROAD },
+      { name: START_PAGE, step: 0 },
+      { name: LOCATION, step: 1 },
+      { name: ARCH, step: 2, images: DECOR.ARCH },
+      { name: PODIUM, step: 3, images: DECOR.PODIUM },
+      { name: FLOWERS_ARCH, step: 4, images: DECOR.FLOWERS_ARCH },
+      { name: ROAD, step: 5, images: DECOR.ROAD },
+      { name: FLOWERS_ROAD, step: 6, images: DECOR.FLOWERS_ROAD },
       { name: CHAIRS, step: 7, images: DECOR.CHAIRS },
     ],
+    src: "./location_SeasonsUp.png",
   },
+
+  {
+    id: SEASONS_RESTAURANT,
+    title: "Времена года. Ресторан.",
+    steps: [
+      { name: START_PAGE, step: 0 },
+      { name: LOCATION, step: 1 },
+      { name: PODIUM, step: 2, images: DECOR.PODIUM },
+      { name: FLOWERS_ARCH, step: 3, images: DECOR.FLOWERS_ARCH },
+      { name: ROAD, step: 4, images: DECOR.ROAD },
+      { name: FLOWERS_ROAD, step: 5, images: DECOR.FLOWERS_ROAD },
+      { name: CHAIRS, step: 6, images: DECOR.CHAIRS },
+    ],
+    src: "./location_SeasonsRestaurant.png",
+  },
+
   {
     id: SEASONS_DOWN,
+    title: "Времена года. Нижняя.",
     steps: [
-      { name: START_PAGE, number: 0 },
-      { name: LOCATION, number: 1 },
-      { name: PODIUM, number: 2, images: DECOR.PODIUM },
-      {
-        name: FLOWERS_ARCH,
-        number: 3,
-        images: [
-          { id: POWDERY, src: "./flowers_arch_big_powdery.png" },
-          { id: WHITE, src: "./flowers_arch_big_white.png" },
-        ],
-      },
+      { name: START_PAGE, step: 0 },
+      { name: LOCATION, step: 1 },
+      { name: PODIUM, step: 2, images: DECOR.PODIUM },
+      { name: FLOWERS_ARCH, step: 3, images: DECOR.FLOWERS_ARCH_BIG },
       { name: ROAD, step: 4, images: DECOR.ROAD },
       { name: FLOWERS_ROAD, step: 5, images: DECOR.FLOWERS_ROAD },
       { name: CHAIRS, step: 6, images: DECOR.CHAIRS },
     ],
     src: "./location_SeasonsDown.png",
-    title: "Времена года. Нижняя.",
   },
+
   {
     id: HVOYA_SEA,
+    title: "Хвоя",
     steps: [
-      { name: START_PAGE, number: 0 },
-      { name: LOCATION, number: 1 },
-      { name: ARCH, number: 2, images: DECOR.ARCH },
-      { name: PODIUM, number: 3, images: DECOR.PODIUM },
-      {
-        name: FLOWERS_ARCH,
-        number: 4,
-        images: [
-          { id: POWDERY, src: "./flowers_arch_powdery.png" },
-          { id: WHITE, src: "./flowers_arch_white.png" },
-        ],
-      },
-      { name: FLOWERS_ROAD, step: 5, images: DECOR.FLOWERS_ROAD },
-      { name: ROAD, step: 6, images: DECOR.ROAD },
+      { name: START_PAGE, step: 0 },
+      { name: LOCATION, step: 1 },
+      { name: ARCH, step: 2, images: DECOR.ARCH },
+      { name: PODIUM, step: 3, images: DECOR.PODIUM },
+      { name: FLOWERS_ARCH, step: 4, images: DECOR.FLOWERS_ARCH },
+      { name: ROAD, step: 5, images: DECOR.ROAD },
+      { name: FLOWERS_ROAD, step: 6, images: DECOR.FLOWERS_ROAD },
       { name: CHAIRS, step: 7, images: DECOR.CHAIRS },
     ],
     src: "./location_HvoyaSea.png",
-    title: "Хвоя",
   },
 ];
 

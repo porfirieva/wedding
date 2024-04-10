@@ -15,7 +15,7 @@ import {
   PODIUM,
   ROAD,
   START_PAGE,
-} from "./constants";
+} from "./store/constants";
 import Arch from "./components/Arch";
 import Hero from "./components/Hero";
 import Road from "./components/Road";
@@ -24,9 +24,9 @@ import Chairs from "./components/Chairs";
 import Podium from "./components/Podium";
 
 function App() {
-  const [state, setState] = useState({ step: { name: START_PAGE, number: 0 } });
+  const [state, setState] = useState({ stepName: START_PAGE, step: 0 });
 
-  const step = state.step.name;
+  const step = state.stepName;
 
   return (
     <div className="container">
