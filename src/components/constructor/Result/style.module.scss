@@ -1,0 +1,45 @@
+.result_wrapper {
+    // margin: 0 auto;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.absolute {
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: unset;
+    margin: auto;
+    width: 30%;
+}
+
+.podium {
+    bottom: 21%;
+    z-index: 2;
+}
+
+.arch {
+    z-index: 3;
+    top: 0;
+    bottom: 0;
+}
+
+.flowersArch {
+    width: 40%;
+}
+
+.road {
+    z-index: 1;
+    bottom: 0;
+    width: 45%;
+}
+
+.flowersRoad {
+    z-index: 4;
+    bottom: 0;
+    width: 50%;
+}
+
+.chairs {
+    width: 100%;
+}
