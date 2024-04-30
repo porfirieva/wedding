@@ -26,9 +26,9 @@ const Constructor = () => {
 
   return (
     <AppContext.Provider value={{ state, setState }}>
-      {step !== LOCATION && <ReturnButton />}
       <div className="section">
         <h1>Конструктор декора</h1>
+        {step !== LOCATION && <ReturnButton />}
         {step === LOCATION && <Location />}
         {step === PODIUM && <Podium />}
         {step === ARCH && <Arch />}

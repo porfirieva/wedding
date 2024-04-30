@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { AppContext } from "../store/AppContext";
 import { PODIUM } from "../store/constants";
 import Result from "../Result";
-import { getStep } from "../utils";
+import ForwardButton from "../ForwardButton";
 
 const Podium = () => {
   const { state, setState } = useContext(AppContext);
@@ -22,12 +22,7 @@ const Podium = () => {
           </div>
         ))}
       </div>
-      <button
-        className="next_btn"
-        onClick={() => setState({ ...state, ...getStep(state) })}
-      >
-        Следующий шаг
-      </button>
+      <ForwardButton />
     </div>
   );
 };

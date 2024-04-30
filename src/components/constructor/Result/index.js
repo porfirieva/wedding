@@ -10,12 +10,12 @@ const getPrice = (state) => {
     "flowersRoad",
     "podium",
     "road",
-    "location",
+    // "location",
   ];
 
   let totalPrice = 0;
 
-  KEYS_WITH_PRICE.map((key) => {
+  KEYS_WITH_PRICE.forEach((key) => {
     if (state[key]) {
       totalPrice += state[key].price;
     }
@@ -38,7 +38,7 @@ const Result = () => {
 
   return (
     <>
-      <p className="text">Итоговая стоимость: {price}р</p>
+      <p className="text price">Итоговая стоимость: {price}р</p>
       <div className={s.result_wrapper}>
         <img src={location?.src} alt="Площадка" />
         {podium && (

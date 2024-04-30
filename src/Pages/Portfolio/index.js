@@ -1,5 +1,5 @@
-const About = () => (
+const Portfolio = () => (
   <div className="not-found">Мы работаем над данной страницей</div>
 );
 
-export default About;
+export default Portfolio;

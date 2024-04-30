@@ -3,12 +3,10 @@ import Page from "./Page";
 
 function App() {
   return (
-    <>
+    <div className="container">
       <Header />
-      <div className="container">
-        <Page />
-      </div>
-    </>
+      <Page />
+    </div>
   );
 }
 

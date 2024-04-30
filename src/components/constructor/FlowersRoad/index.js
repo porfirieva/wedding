@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { AppContext } from "../store/AppContext";
 import { DECOR } from "../store/constants";
 import Result from "../Result";
-import { getStep } from "../utils";
+import ForwardButton from "../ForwardButton";
 
 const FlowersRoad = () => {
   const { state, setState } = useContext(AppContext);
@@ -24,12 +24,7 @@ const FlowersRoad = () => {
           </div>
         ))}
       </div>
-      <button
-        className="next_btn"
-        onClick={() => setState({ ...state, ...getStep(state) })}
-      >
-        Следующий шаг
-      </button>
+      <ForwardButton />
     </div>
   );
 };

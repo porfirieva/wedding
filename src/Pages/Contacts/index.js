@@ -1,3 +1,5 @@
-const Contacts = () => <div>Мы работаем над данной страницей</div>;
+const Contacts = () => (
+  <div className="not-found">Мы работаем над данной страницей</div>
+);
 
 export default Contacts;
