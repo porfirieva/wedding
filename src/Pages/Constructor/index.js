@@ -16,8 +16,10 @@ import {
   LOCATION,
   PODIUM,
   ROAD,
+  EMAIL_FORM,
 } from "../../components/constructor/store/constants";
 import Location from "../../components/constructor/Location";
+import EmailForm from "../../components/constructor/EmailForm";
 
 const Constructor = () => {
   const [state, setState] = useState({ stepName: LOCATION, step: 0 });
@@ -36,6 +38,7 @@ const Constructor = () => {
         {step === ROAD && <Road />}
         {step === FLOWERS_ROAD && <FlowersRoad />}
         {step === CHAIRS && <Chairs />}
+        {step === EMAIL_FORM && <EmailForm />}
       </div>
     </AppContext.Provider>
   );

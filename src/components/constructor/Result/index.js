@@ -1,28 +1,7 @@
 import { useContext } from "react";
 import { AppContext } from "../store/AppContext";
 import s from "./style.module.scss";
-
-const getPrice = (state) => {
-  const KEYS_WITH_PRICE = [
-    "arch",
-    "chairs",
-    "flowersArch",
-    "flowersRoad",
-    "podium",
-    "road",
-    // "location",
-  ];
-
-  let totalPrice = 0;
-
-  KEYS_WITH_PRICE.forEach((key) => {
-    if (state[key]) {
-      totalPrice += state[key].price;
-    }
-  });
-
-  return totalPrice;
-};
+import { getPrice } from "./utils";
 
 const Result = () => {
   const { state } = useContext(AppContext);
@@ -34,11 +13,18 @@ const Result = () => {
   const flowersRoad = state.flowersRoad;
   const chairs = state.chairs;
 
-  const price = getPrice(state);
+  const { totalPrice, priceInfo } = getPrice(state);
 
   return (
     <>
-      <p className="text price">Итоговая стоимость: {price}р</p>
+      {priceInfo.map((el) => (
+        <p key={el.title}>
+          {el.title}: {el.price}
+        </p>
+      ))}
+      <p className={s.totalPrice}>
+        <span>Итоговая стоимость: {totalPrice}р</span>
+      </p>
       <div className={s.result_wrapper}>
         <img src={location?.src} alt="Площадка" />
         {podium && (

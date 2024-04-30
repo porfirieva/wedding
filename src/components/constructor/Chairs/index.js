@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { AppContext } from "../store/AppContext";
 import { DECOR } from "../store/constants";
 import Result from "../Result";
+import ForwardButton from "../ForwardButton";
 
 const Chairs = () => {
   const { state, setState } = useContext(AppContext);
@@ -17,12 +18,7 @@ const Chairs = () => {
           </div>
         ))}
       </div>
-      {/* <button
-        className="next_btn"
-        onClick={() => setState({ ...state, step: ROAD })}
-      >
-        Следующий шаг
-      </button> */}
+      <ForwardButton />
     </div>
   );
 };

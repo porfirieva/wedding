@@ -1,0 +1,14 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    input {
+        padding: 5px;
+    }
+
+    div {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+}
