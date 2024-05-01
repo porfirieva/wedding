@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { AppContext } from "../store/AppContext";
 import s from "./style.module.scss";
-import { getPrice } from "./utils";
+import TotalPrice from "../TotalPrice";
 
 const Result = () => {
   const { state } = useContext(AppContext);
@@ -13,18 +13,9 @@ const Result = () => {
   const flowersRoad = state.flowersRoad;
   const chairs = state.chairs;
 
-  const { totalPrice, priceInfo } = getPrice(state);
-
   return (
     <>
-      {priceInfo.map((el) => (
-        <p key={el.title}>
-          {el.title}: {el.price}
-        </p>
-      ))}
-      <p className={s.totalPrice}>
-        <span>Итоговая стоимость: {totalPrice}р</span>
-      </p>
+      <TotalPrice />
       <div className={s.result_wrapper}>
         <img src={location?.src} alt="Площадка" />
         {podium && (

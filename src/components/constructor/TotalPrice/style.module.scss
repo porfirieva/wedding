@@ -1,0 +1,13 @@
+.totalPrice {
+    margin: 25px 0;
+    span {
+        padding: 7px 25px;
+        background-color: #f3e8d9;
+    }
+}
+
+.item {
+    &:not(:last-child) {
+        margin-bottom: 5px;
+    }
+}

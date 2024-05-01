@@ -33,6 +33,7 @@ const Location = () => {
         settings: {
           slidesToShow: 2,
           dots: true,
+          arrows: false,
         },
       },
     ],

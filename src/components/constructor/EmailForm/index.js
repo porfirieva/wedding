@@ -1,6 +1,9 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import { AppContext } from "../store/AppContext";
 import s from "./style.module.scss";
+import TotalPrice from "../TotalPrice";
+import { getPrice } from "../TotalPrice/utils";
+import { createEmail } from "./utils";
 
 const EmailForm = () => {
   const { state } = useContext(AppContext);
@@ -9,16 +12,27 @@ const EmailForm = () => {
   const [date, setDate] = useState("");
   const [phone, setPhone] = useState();
   const phoneRef = useRef();
+  const { totalPrice, priceInfo } = getPrice(state);
 
   const onSend = (e) => {
-    console.log(state);
-    // window.Email.send({
-    //   SecureToken: "df417d6c-18af-450b-a2c4-d1ef3cffd81c",
-    //   To: "porfirieva.k@gmail.com",
-    //   From: "porfirieva.k@gmail.com",
-    //   Subject: "Новая завка на сайте",
-    //   Body: "Я ПИСЬМОООО",
-    // }).then((message) => alert(message));
+    const message = createEmail(
+      state.location.title,
+      totalPrice,
+      priceInfo,
+      name,
+      date,
+      phone
+    );
+
+    window.Email.send({
+      SecureToken: "df417d6c-18af-450b-a2c4-d1ef3cffd81c",
+      To: "porfirieva.k@gmail.com",
+      From: "porfirieva.k@gmail.com",
+      Subject: "Новая завка на сайте",
+      Body: message,
+    })
+      .then((message) => alert("Ваша заявка успешно отправлена"))
+      .catch((e) => alert(e));
   };
 
   const handleChange = () => {
@@ -40,7 +54,12 @@ const EmailForm = () => {
 
   return (
     <div>
-      тут продублировать информацию о заказе
+      <h3>Вы выбрали:</h3>
+      <TotalPrice />
+      <p className={s.descr}>
+        Для уточнения и согласования деталей, пожалуйста, введите свои данные в
+        форму ниже. Мы обработаем заявку и обязательно с Вами свяжемся.
+      </p>
       <form className={s.form} onSubmit={(e) => e.preventDefault()}>
         <div>
           <label>Ваше имя</label>
@@ -76,7 +95,9 @@ const EmailForm = () => {
           />
         </div>
 
-        <button onClick={onSend}>Отправить заявку</button>
+        <button onClick={onSend} className={s.send}>
+          Отправить заявку
+        </button>
       </form>
     </div>
   );
