@@ -1,12 +1,16 @@
 import { useState } from "react";
 
-import ReturnButton from "../../components/constructor/ReturnButton";
-import FlowersArch from "../../components/constructor/FlowersArch";
-import Arch from "../../components/constructor/Arch";
-import Road from "../../components/constructor/Road";
-import FlowersRoad from "../../components/constructor/FlowersRoad";
-import Chairs from "../../components/constructor/Chairs";
-import Podium from "../../components/constructor/Podium";
+import {
+  ReturnButton,
+  FlowersArch,
+  Arch,
+  Road,
+  FlowersRoad,
+  Chairs,
+  Podium,
+  Location,
+  EmailForm,
+} from "../../components/constructor";
 import { AppContext } from "../../components/constructor/store/AppContext";
 import {
   ARCH,
@@ -18,8 +22,6 @@ import {
   ROAD,
   EMAIL_FORM,
 } from "../../components/constructor/store/constants";
-import Location from "../../components/constructor/Location";
-import EmailForm from "../../components/constructor/EmailForm";
 
 const Constructor = () => {
   const [state, setState] = useState({ stepName: LOCATION, step: 0 });

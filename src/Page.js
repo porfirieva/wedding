@@ -1,12 +1,15 @@
 import { Routes, Route } from "react-router-dom";
-import Constructor from "./Pages/Constructor";
-import NotFound from "./Pages/NotFound";
-import Main from "./Pages/Main";
-import About from "./Pages/About";
-import Contacts from "./Pages/Contacts";
-import Decor from "./Pages/Decor";
-import Portfolio from "./Pages/Portfolio";
-import Rent from "./Pages/Rent";
+
+import {
+  Constructor,
+  Main,
+  About,
+  Portfolio,
+  Decor,
+  Rent,
+  Contacts,
+  NotFound,
+} from "./Pages";
 
 const Page = () => {
   return (

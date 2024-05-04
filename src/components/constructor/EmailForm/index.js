@@ -1,9 +1,10 @@
 import { useContext, useEffect, useRef, useState } from "react";
+
 import { AppContext } from "../store/AppContext";
-import s from "./style.module.scss";
 import TotalPrice from "../TotalPrice";
 import { getPrice } from "../TotalPrice/utils";
 import { createEmail } from "./utils";
+import s from "./style.module.scss";
 
 const EmailForm = () => {
   const { state } = useContext(AppContext);
@@ -24,15 +25,16 @@ const EmailForm = () => {
       phone
     );
 
-    window.Email.send({
-      SecureToken: "df417d6c-18af-450b-a2c4-d1ef3cffd81c",
-      To: "porfirieva.k@gmail.com",
-      From: "porfirieva.k@gmail.com",
-      Subject: "Новая завка на сайте",
-      Body: message,
-    })
-      .then((message) => alert("Ваша заявка успешно отправлена"))
-      .catch((e) => alert(e));
+    // todo
+    // window.Email.send({
+    //   SecureToken: "df417d6c-18af-450b-a2c4-d1ef3cffd81c",
+    //   To: "porfirieva.k@gmail.com",
+    //   From: "porfirieva.k@gmail.com",
+    //   Subject: "Новая завка на сайте",
+    //   Body: message,
+    // })
+    //   .then((message) => alert("Ваша заявка успешно отправлена"))
+    //   .catch((e) => alert(e));
   };
 
   const handleChange = () => {

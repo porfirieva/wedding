@@ -1,8 +1,8 @@
 import { useContext } from "react";
+
 import { AppContext } from "../store/AppContext";
 import { FLOWERS_ARCH } from "../store/constants";
-import Result from "../Result";
-import ForwardButton from "../ForwardButton";
+import Section from "../Section";
 
 const FlowersArch = () => {
   const { state, setState } = useContext(AppContext);
@@ -11,10 +11,8 @@ const FlowersArch = () => {
   ).images;
 
   return (
-    <div className="section">
-      <Result />
-      <p className="text">Выберите цветы для арки</p>
-      <div className="items-small">
+    <Section title="Выберите цветы для арки">
+      <>
         <div onClick={() => setState({ ...state, flowersArch: null })}>
           Без цветов
         </div>
@@ -26,9 +24,8 @@ const FlowersArch = () => {
             <img src={el.src} alt={el.id} />
           </div>
         ))}
-      </div>
-      <ForwardButton />
-    </div>
+      </>
+    </Section>
   );
 };
 

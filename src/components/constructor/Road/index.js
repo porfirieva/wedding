@@ -1,17 +1,15 @@
 import { useContext } from "react";
+
 import { AppContext } from "../store/AppContext";
 import { DECOR } from "../store/constants";
-import Result from "../Result";
-import ForwardButton from "../ForwardButton";
+import Section from "../Section";
 
 const Road = () => {
   const { state, setState } = useContext(AppContext);
 
   return (
-    <div className="section">
-      <Result />
-      <p className="text">Выберите дорожку</p>
-      <div className="items-small">
+    <Section title="Выберите дорожку">
+      <>
         <div onClick={() => setState({ ...state, road: null })}>
           Без дорожки
         </div>
@@ -20,9 +18,8 @@ const Road = () => {
             <img src={el.src} alt={el.id} />
           </div>
         ))}
-      </div>
-      <ForwardButton />
-    </div>
+      </>
+    </Section>
   );
 };
 

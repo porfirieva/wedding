@@ -1,18 +1,16 @@
 import { useContext } from "react";
+
 import { AppContext } from "../store/AppContext";
 import { PODIUM } from "../store/constants";
-import Result from "../Result";
-import ForwardButton from "../ForwardButton";
+import Section from "../Section";
 
 const Podium = () => {
   const { state, setState } = useContext(AppContext);
   const podium = state.location.steps.find((el) => el.name === PODIUM).images;
 
   return (
-    <div className="section">
-      <Result />
-      <p className="text">Выберите подиум</p>
-      <div className="items-small">
+    <Section title="Выберите подиум">
+      <>
         <div onClick={() => setState({ ...state, podium: null })}>
           Без подиума
         </div>
@@ -21,9 +19,8 @@ const Podium = () => {
             <img src={el.src} alt={el.id} />
           </div>
         ))}
-      </div>
-      <ForwardButton />
-    </div>
+      </>
+    </Section>
   );
 };
 

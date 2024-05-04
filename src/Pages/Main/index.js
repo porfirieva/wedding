@@ -5,6 +5,7 @@ const Main = () => {
   return (
     <div className="section">
       <MenuList />
+      {/* todo slider */}
       <img src={mainImage} alt="ourWorks" />
     </div>
   );
