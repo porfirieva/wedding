@@ -4,6 +4,7 @@ import { AppContext } from "../store/AppContext";
 import TotalPrice from "../TotalPrice";
 import { getPrice } from "../TotalPrice/utils";
 import { createEmail } from "./utils";
+import Input from "./input";
 import s from "./style.module.scss";
 
 const EmailForm = () => {
@@ -15,7 +16,18 @@ const EmailForm = () => {
   const phoneRef = useRef();
   const { totalPrice, priceInfo } = getPrice(state);
 
+  const [invalidPhone, setInvalidPhone] = useState(false);
+
   const onSend = (e) => {
+    e.preventDefault();
+
+    setInvalidPhone(false);
+
+    if (phone.length !== 11) {
+      setInvalidPhone(true);
+      return;
+    }
+
     const message = createEmail(
       state.location.title,
       totalPrice,
@@ -25,19 +37,18 @@ const EmailForm = () => {
       phone
     );
 
-    // todo
-    // window.Email.send({
-    //   SecureToken: "df417d6c-18af-450b-a2c4-d1ef3cffd81c",
-    //   To: "porfirieva.k@gmail.com",
-    //   From: "porfirieva.k@gmail.com",
-    //   Subject: "Новая завка на сайте",
-    //   Body: message,
-    // })
-    //   .then((message) => alert("Ваша заявка успешно отправлена"))
-    //   .catch((e) => alert(e));
+    window.Email.send({
+      SecureToken: "df417d6c-18af-450b-a2c4-d1ef3cffd81c",
+      To: "porfirieva.k@gmail.com",
+      From: "porfirieva.k@gmail.com",
+      Subject: "Новая завка на сайте",
+      Body: message,
+    })
+      .then((message) => alert("Ваша заявка успешно отправлена"))
+      .catch((e) => alert(e));
   };
 
-  const handleChange = () => {
+  const handlePhoneChange = () => {
     const value = phoneRef.current.value
       .replace(/\D/g, "")
       .match(/(\d{0,1})(\d{0,3})(\d{0,3})(\d{0,4})/);
@@ -51,7 +62,7 @@ const EmailForm = () => {
   };
 
   useEffect(() => {
-    handleChange();
+    handlePhoneChange();
   }, [phone]);
 
   return (
@@ -62,42 +73,36 @@ const EmailForm = () => {
         Для уточнения и согласования деталей, пожалуйста, введите свои данные в
         форму ниже. Мы обработаем заявку и обязательно с Вами свяжемся.
       </p>
-      <form className={s.form} onSubmit={(e) => e.preventDefault()}>
-        <div>
-          <label>Ваше имя</label>
-          <input
-            type="text"
-            name="name"
-            required
-            placeholder="Имя"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-        </div>
-        <div>
-          <label>Дата мероприятия</label>
-          <input
-            type="date"
-            name="date"
-            value={date}
-            onChange={(e) => setDate(e.target.value)}
-            required
-            placeholder="Дата мероприятия"
-          />
-        </div>
-        <div>
-          <label>Номер телефона для связи</label>
-          <input
-            ref={phoneRef}
-            type="numder"
-            name="phone"
-            onChange={handleChange}
-            required
-            placeholder="Номер телефона"
-          />
-        </div>
+      <form className={s.form} onSubmit={onSend}>
+        <Input
+          title="Ваше имя"
+          type="text"
+          name="name"
+          placeholder="Имя"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+        <Input
+          title="Дата мероприятия"
+          type="date"
+          name="date"
+          value={date}
+          onChange={(e) => setDate(e.target.value)}
+          placeholder="Дата мероприятия"
+        />
 
-        <button onClick={onSend} className={s.send}>
+        <Input
+          title="Номер телефона для связи"
+          customRref={phoneRef}
+          type="numder"
+          name="phone"
+          error={invalidPhone}
+          errorText="Пожалуйста, проверьте введенный номер телефона"
+          onChange={handlePhoneChange}
+          placeholder="Номер телефона"
+        />
+
+        <button className={s.send} type="submit">
           Отправить заявку
         </button>
       </form>
