@@ -27,24 +27,14 @@ const Section = ({ title, data, onClick, reset, resetTitle }) => {
       <p className="text">{title}</p>
       <div className="items-small">
         <Slider {...settings}>
-          {resetTitle && (
-            <div>
-              <div onClick={reset} className="slide-wrapper">
-                <div className="slide-content">
-                  <div>{resetTitle}</div>
-                </div>
-              </div>
-            </div>
-          )}
+          {resetTitle && <div onClick={reset}>{resetTitle}</div>}
           {data.map((el) => (
-            <div key={el.id}>
-              <div onClick={() => onClick(el)} className="slide-wrapper">
-                <div className="slide-content">
-                  <div>
-                    <img src={el.src} alt={el.id} />
-                  </div>
-                </div>
-              </div>
+            <div
+              key={el.id}
+              onClick={() => onClick(el)}
+              className="slide-wrapper"
+            >
+              <img src={el.src} alt={el.id} />
             </div>
           ))}
         </Slider>
