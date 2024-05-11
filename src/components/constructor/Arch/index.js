@@ -9,16 +9,13 @@ const Arch = () => {
   const archs = state.location.steps.find((el) => el.name === ARCH).images;
 
   return (
-    <Section title="Выберите арку">
-      <>
-        <div onClick={() => setState({ ...state, arch: null })}>Без арки</div>
-        {archs.map((el) => (
-          <div key={el.id} onClick={() => setState({ ...state, arch: el })}>
-            <img src={el.src} alt={el.id} />
-          </div>
-        ))}
-      </>
-    </Section>
+    <Section
+      title="Выберите арку"
+      onClick={(el) => setState({ ...state, arch: el })}
+      reset={() => setState({ ...state, arch: null })}
+      resetTitle="Без арки"
+      data={archs}
+    />
   );
 };
 

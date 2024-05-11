@@ -8,13 +8,11 @@ const Chairs = () => {
   const { state, setState } = useContext(AppContext);
 
   return (
-    <Section title="Выберите стулья">
-      {DECOR.CHAIRS.map((el) => (
-        <div key={el.id} onClick={() => setState({ ...state, chairs: el })}>
-          <img src={el.src} alt={el.id} />
-        </div>
-      ))}
-    </Section>
+    <Section
+      title="Выберите стулья"
+      onClick={(el) => setState({ ...state, chairs: el })}
+      data={DECOR.CHAIRS}
+    />
   );
 };
 

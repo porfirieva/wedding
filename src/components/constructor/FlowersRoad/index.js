@@ -8,21 +8,13 @@ const FlowersRoad = () => {
   const { state, setState } = useContext(AppContext);
 
   return (
-    <Section title="Выберите цветы вдоль дорожки">
-      <>
-        <div onClick={() => setState({ ...state, flowersRoad: null })}>
-          Без цветов
-        </div>
-        {DECOR.FLOWERS_ROAD.map((el) => (
-          <div
-            key={el.id}
-            onClick={() => setState({ ...state, flowersRoad: el })}
-          >
-            <img src={el.src} alt={el.id} />
-          </div>
-        ))}
-      </>
-    </Section>
+    <Section
+      title="Выберите цветы вдоль дорожки"
+      onClick={(el) => setState({ ...state, flowersRoad: el })}
+      reset={() => setState({ ...state, flowersRoad: null })}
+      resetTitle="Без цветов"
+      data={DECOR.FLOWERS_ROAD}
+    />
   );
 };
 

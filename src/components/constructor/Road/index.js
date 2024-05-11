@@ -8,18 +8,13 @@ const Road = () => {
   const { state, setState } = useContext(AppContext);
 
   return (
-    <Section title="Выберите дорожку">
-      <>
-        <div onClick={() => setState({ ...state, road: null })}>
-          Без дорожки
-        </div>
-        {DECOR.ROAD.map((el) => (
-          <div key={el.id} onClick={() => setState({ ...state, road: el })}>
-            <img src={el.src} alt={el.id} />
-          </div>
-        ))}
-      </>
-    </Section>
+    <Section
+      title="Выберите дорожку"
+      onClick={(el) => setState({ ...state, road: el })}
+      reset={() => setState({ ...state, road: null })}
+      resetTitle="Без дорожки"
+      data={DECOR.ROAD}
+    />
   );
 };
 

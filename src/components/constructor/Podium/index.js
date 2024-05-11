@@ -9,18 +9,13 @@ const Podium = () => {
   const podium = state.location.steps.find((el) => el.name === PODIUM).images;
 
   return (
-    <Section title="Выберите подиум">
-      <>
-        <div onClick={() => setState({ ...state, podium: null })}>
-          Без подиума
-        </div>
-        {podium.map((el) => (
-          <div key={el.id} onClick={() => setState({ ...state, podium: el })}>
-            <img src={el.src} alt={el.id} />
-          </div>
-        ))}
-      </>
-    </Section>
+    <Section
+      title="Выберите подиум"
+      onClick={(el) => setState({ ...state, podium: el })}
+      reset={() => setState({ ...state, podium: null })}
+      resetTitle="Без подиума"
+      data={podium}
+    />
   );
 };
 

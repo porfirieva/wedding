@@ -11,21 +11,13 @@ const FlowersArch = () => {
   ).images;
 
   return (
-    <Section title="Выберите цветы для арки">
-      <>
-        <div onClick={() => setState({ ...state, flowersArch: null })}>
-          Без цветов
-        </div>
-        {flowers.map((el) => (
-          <div
-            key={el.id}
-            onClick={() => setState({ ...state, flowersArch: el })}
-          >
-            <img src={el.src} alt={el.id} />
-          </div>
-        ))}
-      </>
-    </Section>
+    <Section
+      title="Выберите цветы для арки"
+      onClick={(el) => setState({ ...state, flowersArch: el })}
+      reset={() => setState({ ...state, flowersArch: null })}
+      resetTitle={"Без цветов"}
+      data={flowers}
+    />
   );
 };
 

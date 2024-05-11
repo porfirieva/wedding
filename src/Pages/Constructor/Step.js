@@ -22,6 +22,7 @@ import {
   ROAD,
   EMAIL_FORM,
 } from "../../components/constructor/store/constants";
+import "../../styles/slider.css";
 
 const Step = () => {
   const { state } = useContext(AppContext);
