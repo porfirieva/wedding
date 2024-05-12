@@ -2,6 +2,7 @@ import Slider from "react-slick";
 
 import Result from "../Result";
 import ForwardButton from "../ForwardButton";
+import "./style.css";
 
 const Section = ({ title, data, onClick, reset, resetTitle }) => {
   const settings = {
@@ -15,6 +16,7 @@ const Section = ({ title, data, onClick, reset, resetTitle }) => {
         breakpoint: 600,
         settings: {
           dots: true,
+          slidesToShow: 2,
           arrows: false,
         },
       },
@@ -27,13 +29,13 @@ const Section = ({ title, data, onClick, reset, resetTitle }) => {
       <p className="text">{title}</p>
       <div className="items-small">
         <Slider {...settings}>
-          {resetTitle && <div onClick={reset}>{resetTitle}</div>}
+          {resetTitle && (
+            <div onClick={reset} className="reset-slide">
+              {resetTitle}
+            </div>
+          )}
           {data.map((el) => (
-            <div
-              key={el.id}
-              onClick={() => onClick(el)}
-              className="slide-wrapper"
-            >
+            <div key={el.id} onClick={() => onClick(el)}>
               <img src={el.src} alt={el.id} />
             </div>
           ))}
