@@ -8,19 +8,15 @@
   padding: 10px 15px;
   border: 1px solid rgb(192, 192, 192);
   background-color: #93846e;
-  color: #fff;
   cursor: pointer;
 }
 
 .items-small .slick-slide > div {
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-}
-
-.items-small .slick-slide div {
-  height: 100%;
 }
 
 .items-small .slick-list {
@@ -29,7 +25,16 @@
 
 .reset-slide {
   height: 100%;
-  align-content: center;
+  position: relative;
+}
+
+.reset-slide p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  text-wrap: nowrap;
 }
 
 @media(max-width: 600px) {

@@ -31,7 +31,7 @@ const Section = ({ title, data, onClick, reset, resetTitle }) => {
         <Slider {...settings}>
           {resetTitle && (
             <div onClick={reset} className="reset-slide">
-              {resetTitle}
+              <p>{resetTitle}</p>
             </div>
           )}
           {data.map((el) => (
