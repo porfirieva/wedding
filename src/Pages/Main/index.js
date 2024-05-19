@@ -1,12 +1,12 @@
 import Slider from "react-slick";
 
 import MenuList from "../../components/MenuList";
-import example from "./example.png";
-import example2 from "./example2.png";
-import example3 from "./example3.png";
-import example4 from "./example4.png";
-import example5 from "./example5.png";
-import example6 from "./example6.png";
+import example from "./example.jpg";
+import example2 from "./example2.jpg";
+import example3 from "./example3.jpg";
+import example4 from "./example4.jpg";
+import example5 from "./example5.jpg";
+import example6 from "./example6.jpg";
 
 const Main = () => {
   const settings = {
@@ -16,6 +16,7 @@ const Main = () => {
     arrows: false,
     slidesToScroll: 1,
     infinite: true,
+    autoplaySpeed: 2000,
     cssEase: "ease-in-out",
   };
 
