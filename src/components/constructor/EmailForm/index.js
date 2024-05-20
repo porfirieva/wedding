@@ -40,7 +40,7 @@ const EmailForm = () => {
     window.Email.send({
       SecureToken: "df417d6c-18af-450b-a2c4-d1ef3cffd81c",
       To: "porfirieva.k@gmail.com",
-      From: "porfirieva.k@gmail.com",
+      From: "info@decor-bv.ru",
       Subject: "Новая завка на сайте",
       Body: message,
     })
