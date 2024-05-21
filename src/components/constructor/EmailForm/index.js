@@ -6,6 +6,7 @@ import { getPrice } from "../TotalPrice/utils";
 import { createEmail } from "./utils";
 import Input from "./input";
 import s from "./style.module.scss";
+import { OK } from "./constants";
 
 const EmailForm = () => {
   const { state } = useContext(AppContext);
@@ -38,13 +39,19 @@ const EmailForm = () => {
     );
 
     window.Email.send({
-      SecureToken: "df417d6c-18af-450b-a2c4-d1ef3cffd81c",
-      To: "porfirieva.k@gmail.com",
+      SecureToken: "2a0a8a7e-a09c-400f-8c54-d7cf80d2feb3",
+      To: "helenka_p@mail.ru",
       From: "info@decor-bv.ru",
       Subject: "Новая завка на сайте",
       Body: message,
     })
-      .then((message) => alert("Ваша заявка успешно отправлена"))
+      .then((message) => {
+        if (message === OK) {
+          alert("Ваша заявка успешно отправлена!");
+        } else {
+          alert("Что-то пошло не так, попробуйте еще раз");
+        }
+      })
       .catch((e) => alert(e));
   };
 
