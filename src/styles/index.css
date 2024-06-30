@@ -1,6 +1,12 @@
 
 @import './normalize.css';
 
+@font-face {
+  font-family: 'Nunito';
+  src: 
+    url('./fonts/NunitoRegular.ttf');
+}
+
 :root {
   --color: #909090
 }
@@ -12,7 +18,7 @@ html {
 
 body {
   margin: 0;
-  font-family: 'Podkova', "Open Sans", "Arial", "Helvetica", sans-serif;
+  font-family: 'Nunito', "Open Sans", "Arial", "Helvetica", sans-serif;
   color: var(--color);
   width: 100%;
   max-width: 600px;
