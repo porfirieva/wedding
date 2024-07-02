@@ -1,16 +1,23 @@
-import { useContext } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 
-import { AppContext } from "../store/AppContext";
-import { DECOR } from "../store/constants";
+import { CHAIRS, DECOR } from "../store/constants";
 import Section from "../Section";
+import { updateSearchParams } from "../utils";
 
 const Chairs = () => {
-  const { state, setState } = useContext(AppContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleClick = (el) => {
+    navigate(updateSearchParams(location.search, "chairs", el.id), {
+      state: { step: CHAIRS },
+    });
+  };
 
   return (
     <Section
       title="Выберите стулья"
-      onClick={(el) => setState({ ...state, chairs: el })}
+      onClick={(el) => handleClick(el)}
       data={DECOR.CHAIRS}
     />
   );

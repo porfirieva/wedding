@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 
 import {
   ReturnButton,
@@ -11,29 +12,35 @@ import {
   Location,
   EmailForm,
 } from "../../components/constructor";
-import { AppContext } from "../../components/constructor/store/AppContext";
 import {
   ARCH,
   CHAIRS,
   FLOWERS_ARCH,
   FLOWERS_ROAD,
-  LOCATION,
   PODIUM,
   ROAD,
   EMAIL_FORM,
+  LOCATIONS,
 } from "../../components/constructor/store/constants";
 import "../../styles/slider.css";
 
 const Step = () => {
-  const { state } = useContext(AppContext);
-  const step = state.stepName;
+  const { search } = useLocation();
+
+  const params = new URLSearchParams(search);
+  const arch = params.get("arch");
+  const flowersArch = params.get("flowersArch");
+  const podium = params.get("podium");
+
+  const steps = LOCATIONS.find((el) => el.id === params.get("location"))?.steps;
+  const step = steps ? steps[1].name : undefined;
 
   return (
     <>
-      {step !== LOCATION && <ReturnButton />}
-      {step === LOCATION && <Location />}
+      {!!search && <ReturnButton />}
+      {!params.size && <Location />}
       {step === PODIUM && <Podium />}
-      {step === ARCH && <Arch />}
+      {step === ARCH && <Arch steps={steps} />}
       {step === FLOWERS_ARCH && <FlowersArch />}
       {step === ROAD && <Road />}
       {step === FLOWERS_ROAD && <FlowersRoad />}

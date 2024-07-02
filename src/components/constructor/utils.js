@@ -1,12 +1,18 @@
-import { LOCATION } from "./store/constants";
+import { LOCATIONS } from "./store/constants";
 
-export const getStep = (state, step = 1) => {
-  const stepName = state.location
-    ? state.location.steps[state.step + step].name
-    : LOCATION;
+export const getStep = (id) => {
+  return LOCATIONS.find((el) => el.id === id);
+};
 
+export const updateSearchParams = (state, step, value) => {
+  if (state.includes(step)) {
+    const params = new URLSearchParams(state);
+    params.delete(step);
+    return {
+      search: `${params}&${step}=${value}`,
+    };
+  }
   return {
-    stepName,
-    step: state.step + step,
+    search: `${state}&${step}=${value}`,
   };
 };

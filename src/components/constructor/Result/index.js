@@ -13,6 +13,8 @@ const Result = () => {
   const flowersRoad = state.flowersRoad;
   const chairs = state.chairs;
 
+  // if (!location) return null;
+
   return (
     <>
       <TotalPrice />

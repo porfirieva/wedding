@@ -1,23 +1,13 @@
-import { useContext } from "react";
-import { AppContext } from "../store/AppContext";
-import { getStep } from "../utils";
+import { useNavigate } from "react-router-dom";
+
 import { ArrowIcon as BackIcon } from "../../icons/ArrowIcon";
 import s from "./style.module.scss";
 
 const ReturnButton = () => {
-  const { state, setState } = useContext(AppContext);
+  const navigate = useNavigate();
 
   return (
-    <div
-      className={s.back}
-      title="Назад"
-      onClick={() =>
-        setState({
-          ...state,
-          ...getStep(state, -1),
-        })
-      }
-    >
+    <div className={s.back} title="Назад" onClick={() => navigate(-1)}>
       <BackIcon />
 
       <button>Назад</button>
