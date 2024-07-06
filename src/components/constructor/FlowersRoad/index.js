@@ -1,30 +1,31 @@
-import { useContext } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useLocation, useSearchParams } from "react-router-dom";
 
-import { AppContext } from "../store/AppContext";
-import { DECOR, FLOWERS_ROAD } from "../store/constants";
+import { FLOWERS_ROAD, LOCATION } from "../store/constants";
 import Section from "../Section";
-import { updateSearchParams } from "../utils";
+import { getStepData, updateSearchParams } from "../utils";
 
 const FlowersRoad = () => {
-  const { state, setState } = useContext(AppContext);
+  const [, setSearchParams] = useSearchParams();
 
-  const navigate = useNavigate();
-  const location = useLocation();
+  const { search } = useLocation();
+
+  const params = new URLSearchParams(search);
+  const location = params.get(LOCATION);
+
+  const data = getStepData(location, FLOWERS_ROAD);
 
   const handleClick = (el) => {
-    navigate(updateSearchParams(location.search, "flowersRoad", el.id), {
-      state: { step: FLOWERS_ROAD },
-    });
+    const { params } = updateSearchParams(search, FLOWERS_ROAD, el.id);
+
+    setSearchParams(params);
   };
 
   return (
     <Section
       title="Выберите цветы вдоль дорожки"
       onClick={(el) => handleClick(el)}
-      reset={() => setState({ ...state, flowersRoad: null })}
       resetTitle="Без цветов"
-      data={DECOR.FLOWERS_ROAD}
+      data={data.images}
     />
   );
 };

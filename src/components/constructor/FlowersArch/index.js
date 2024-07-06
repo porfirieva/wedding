@@ -1,33 +1,31 @@
-import { useContext } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useLocation, useSearchParams } from "react-router-dom";
 
-import { AppContext } from "../store/AppContext";
-import { FLOWERS_ARCH } from "../store/constants";
+import { FLOWERS_ARCH, LOCATION } from "../store/constants";
 import Section from "../Section";
-import { updateSearchParams } from "../utils";
+import { getStepData, updateSearchParams } from "../utils";
 
 const FlowersArch = () => {
-  const { state, setState } = useContext(AppContext);
-  const flowers = state.location.steps.find(
-    (el) => el.name === FLOWERS_ARCH
-  ).images;
+  const [, setSearchParams] = useSearchParams();
 
-  const navigate = useNavigate();
-  const location = useLocation();
+  const { search } = useLocation();
+
+  const params = new URLSearchParams(search);
+  const location = params.get(LOCATION);
+
+  const data = getStepData(location, FLOWERS_ARCH);
 
   const handleClick = (el) => {
-    navigate(updateSearchParams(location.search, "flowersArch", el.id), {
-      state: { step: FLOWERS_ARCH },
-    });
+    const { params } = updateSearchParams(search, FLOWERS_ARCH, el.id);
+
+    setSearchParams(params);
   };
 
   return (
     <Section
       title="Выберите цветы для арки"
       onClick={(el) => handleClick(el)}
-      reset={() => setState({ ...state, flowersArch: null })}
       resetTitle={"Без цветов"}
-      data={flowers}
+      data={data.images}
     />
   );
 };

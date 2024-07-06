@@ -1,24 +1,29 @@
-import { useNavigate, useLocation } from "react-router-dom";
+import { useLocation, useSearchParams } from "react-router-dom";
 
-import { CHAIRS, DECOR } from "../store/constants";
+import { CHAIRS, LOCATION } from "../store/constants";
 import Section from "../Section";
-import { updateSearchParams } from "../utils";
+import { getStepData, updateSearchParams } from "../utils";
 
 const Chairs = () => {
-  const navigate = useNavigate();
-  const location = useLocation();
+  const [, setSearchParams] = useSearchParams();
+
+  const { search } = useLocation();
+
+  const params = new URLSearchParams(search);
+  const location = params.get(LOCATION);
+
+  const data = getStepData(location, CHAIRS);
 
   const handleClick = (el) => {
-    navigate(updateSearchParams(location.search, "chairs", el.id), {
-      state: { step: CHAIRS },
-    });
-  };
+    const { params } = updateSearchParams(search, CHAIRS, el.id);
 
+    setSearchParams(params);
+  };
   return (
     <Section
       title="Выберите стулья"
       onClick={(el) => handleClick(el)}
-      data={DECOR.CHAIRS}
+      data={data.images}
     />
   );
 };

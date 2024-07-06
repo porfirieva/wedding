@@ -1,31 +1,31 @@
-import { useContext } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useLocation, useSearchParams } from "react-router-dom";
 
-import { AppContext } from "../store/AppContext";
-import { ARCH } from "../store/constants";
+import { ARCH, LOCATION } from "../store/constants";
 import Section from "../Section";
-import { updateSearchParams } from "../utils";
+import { getStepData, updateSearchParams } from "../utils";
 
-const Arch = ({ steps }) => {
-  const { state, setState } = useContext(AppContext);
-  const archs = steps.find((el) => el.name === ARCH).images;
+const Arch = () => {
+  const [, setSearchParams] = useSearchParams();
 
-  const navigate = useNavigate();
-  const location = useLocation();
+  const { search } = useLocation();
+
+  const params = new URLSearchParams(search);
+  const location = params.get(LOCATION);
+
+  const data = getStepData(location, ARCH);
 
   const handleClick = (el) => {
-    navigate(updateSearchParams(location.search, "arch", el.id), {
-      state: { step: ARCH },
-    });
+    const { params } = updateSearchParams(search, ARCH, el.id);
+
+    setSearchParams(params);
   };
 
   return (
     <Section
       title="Выберите арку"
       onClick={(el) => handleClick(el)}
-      reset={() => setState({ ...state, arch: null })}
       resetTitle="Без арки"
-      data={archs}
+      data={data?.images}
     />
   );
 };

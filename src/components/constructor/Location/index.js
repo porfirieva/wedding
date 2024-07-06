@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 
 import Slider from "react-slick";
 import { LOCATIONS } from "../store/constants";
@@ -8,7 +8,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const Location = () => {
-  const navigate = useNavigate();
+  const [, setSearchParams] = useSearchParams();
 
   const settings = {
     speed: 500,
@@ -27,7 +27,9 @@ const Location = () => {
   };
 
   const onClick = (el) => {
-    navigate({ search: `?location=${el.id}` });
+    const { name, step } = LOCATIONS.find((item) => item.id === el.id).steps[0];
+    let params = { LOCATION: el.id, STEP: name, NUM: step };
+    setSearchParams(params);
   };
 
   return (

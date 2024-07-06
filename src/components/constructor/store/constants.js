@@ -8,6 +8,9 @@ export const FLOWERS_ROAD = "FLOWERS_ROAD";
 export const CHAIRS = "CHAIRS";
 export const EMAIL_FORM = "EMAIL_FORM";
 
+export const STEP = "STEP";
+export const NUM = "NUM";
+
 const ROUND = "ROUND";
 const POWDERY = "POWDERY";
 const WHITE = "WHITE";
@@ -107,7 +110,6 @@ export const LOCATIONS = [
     id: SEASONS_UP,
     title: "Времена года. Верхняя.",
     steps: [
-      { name: LOCATION, step: 0 },
       { name: ARCH, step: 1, images: DECOR.ARCH },
       { name: PODIUM, step: 2, images: DECOR.PODIUM },
       { name: FLOWERS_ARCH, step: 3, images: DECOR.FLOWERS_ARCH },
@@ -124,7 +126,6 @@ export const LOCATIONS = [
     id: SEASONS_RESTAURANT,
     title: "Времена года. Ресторан.",
     steps: [
-      { name: LOCATION, step: 0 },
       { name: PODIUM, step: 1, images: DECOR.PODIUM },
       { name: FLOWERS_ARCH, step: 2, images: DECOR.FLOWERS_ARCH },
       { name: ROAD, step: 3, images: DECOR.ROAD },
@@ -140,7 +141,6 @@ export const LOCATIONS = [
     id: SEASONS_DOWN,
     title: "Времена года. Нижняя.",
     steps: [
-      { name: LOCATION, step: 0 },
       { name: PODIUM, step: 1, images: DECOR.PODIUM },
       { name: FLOWERS_ARCH, step: 2, images: DECOR.FLOWERS_ARCH_BIG },
       { name: ROAD, step: 3, images: DECOR.ROAD },
@@ -156,7 +156,6 @@ export const LOCATIONS = [
     id: HVOYA_SEA,
     title: "Хвоя",
     steps: [
-      { name: LOCATION, step: 0 },
       { name: ARCH, step: 1, images: DECOR.ARCH },
       { name: PODIUM, step: 2, images: DECOR.PODIUM },
       { name: FLOWERS_ARCH, step: 3, images: DECOR.FLOWERS_ARCH },

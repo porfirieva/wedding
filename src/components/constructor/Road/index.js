@@ -1,30 +1,31 @@
-import { useContext } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useLocation, useSearchParams } from "react-router-dom";
 
-import { AppContext } from "../store/AppContext";
-import { DECOR, ROAD } from "../store/constants";
+import { LOCATION, ROAD } from "../store/constants";
 import Section from "../Section";
-import { updateSearchParams } from "../utils";
+import { getStepData, updateSearchParams } from "../utils";
 
 const Road = () => {
-  const { state, setState } = useContext(AppContext);
+  const [, setSearchParams] = useSearchParams();
 
-  const navigate = useNavigate();
-  const location = useLocation();
+  const { search } = useLocation();
+
+  const params = new URLSearchParams(search);
+  const location = params.get(LOCATION);
+
+  const data = getStepData(location, ROAD);
 
   const handleClick = (el) => {
-    navigate(updateSearchParams(location.search, "road", el.id), {
-      state: { step: ROAD },
-    });
+    const { params } = updateSearchParams(search, ROAD, el.id);
+
+    setSearchParams(params);
   };
 
   return (
     <Section
       title="Выберите дорожку"
       onClick={(el) => handleClick(el)}
-      reset={() => setState({ ...state, road: null })}
       resetTitle="Без дорожки"
-      data={DECOR.ROAD}
+      data={data.images}
     />
   );
 };

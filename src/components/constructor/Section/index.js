@@ -34,7 +34,7 @@ const Section = ({ title, data, onClick, reset, resetTitle }) => {
               <p>{resetTitle}</p>
             </div>
           )}
-          {data.map((el) => (
+          {data?.map((el) => (
             <div key={el.id} onClick={() => onClick(el)}>
               <img src={el.src} alt={el.id} />
             </div>

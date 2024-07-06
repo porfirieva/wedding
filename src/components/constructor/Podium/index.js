@@ -1,31 +1,31 @@
-import { useContext } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useLocation, useSearchParams } from "react-router-dom";
 
-import { AppContext } from "../store/AppContext";
-import { PODIUM } from "../store/constants";
+import { LOCATION, PODIUM } from "../store/constants";
 import Section from "../Section";
-import { updateSearchParams } from "../utils";
+import { getStepData, updateSearchParams } from "../utils";
 
 const Podium = () => {
-  const { state, setState } = useContext(AppContext);
-  const podium = state.location.steps.find((el) => el.name === PODIUM).images;
+  const [, setSearchParams] = useSearchParams();
 
-  const navigate = useNavigate();
-  const location = useLocation();
+  const { search } = useLocation();
+
+  const params = new URLSearchParams(search);
+  const location = params.get(LOCATION);
+
+  const data = getStepData(location, PODIUM);
 
   const handleClick = (el) => {
-    navigate(updateSearchParams(location.search, "podium", el.id), {
-      state: { step: PODIUM },
-    });
+    const { params } = updateSearchParams(search, PODIUM, el.id);
+
+    setSearchParams(params);
   };
 
   return (
     <Section
       title="Выберите подиум"
       onClick={(el) => handleClick(el)}
-      reset={() => setState({ ...state, podium: null })}
       resetTitle="Без подиума"
-      data={podium}
+      data={data.images}
     />
   );
 };
