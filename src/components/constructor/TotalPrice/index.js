@@ -1,11 +1,10 @@
-import { useContext } from "react";
-import { AppContext } from "../store/AppContext";
+import { useLocation } from "react-router";
 import { getPrice } from "./utils";
 import s from "./style.module.scss";
 
 const TotalPrice = () => {
-  const { state } = useContext(AppContext);
-  const { totalPrice, priceInfo } = getPrice(state);
+  const { search } = useLocation();
+  const { totalPrice, priceInfo } = getPrice(search);
 
   return (
     <>

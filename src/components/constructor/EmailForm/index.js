@@ -1,21 +1,25 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
-import { AppContext } from "../store/AppContext";
 import TotalPrice from "../TotalPrice";
 import { getPrice } from "../TotalPrice/utils";
 import { createEmail } from "./utils";
 import Input from "./input";
 import s from "./style.module.scss";
 import { OK } from "./constants";
+import { useLocation } from "react-router";
+import { LOCATION, LOCATIONS } from "../store/constants";
 
 const EmailForm = () => {
-  const { state } = useContext(AppContext);
-
   const [name, setName] = useState("");
   const [date, setDate] = useState("");
   const [phone, setPhone] = useState();
   const phoneRef = useRef();
-  const { totalPrice, priceInfo } = getPrice(state);
+
+  const { search } = useLocation();
+  const params = new URLSearchParams(search);
+  const location = LOCATIONS.find((el) => el.id === params.get(LOCATION)).title;
+
+  const { totalPrice, priceInfo } = getPrice(search);
 
   const [invalidPhone, setInvalidPhone] = useState(false);
 
@@ -30,7 +34,7 @@ const EmailForm = () => {
     }
 
     const message = createEmail(
-      state.location.title,
+      location,
       totalPrice,
       priceInfo,
       name,

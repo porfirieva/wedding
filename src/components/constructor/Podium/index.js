@@ -1,12 +1,10 @@
-import { useLocation, useSearchParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 import { LOCATION, PODIUM } from "../store/constants";
 import Section from "../Section";
-import { getStepData, updateSearchParams } from "../utils";
+import { getStepData } from "../utils";
 
 const Podium = () => {
-  const [, setSearchParams] = useSearchParams();
-
   const { search } = useLocation();
 
   const params = new URLSearchParams(search);
@@ -14,18 +12,12 @@ const Podium = () => {
 
   const data = getStepData(location, PODIUM);
 
-  const handleClick = (el) => {
-    const { params } = updateSearchParams(search, PODIUM, el.id);
-
-    setSearchParams(params);
-  };
-
   return (
     <Section
       title="Выберите подиум"
-      onClick={(el) => handleClick(el)}
       resetTitle="Без подиума"
       data={data.images}
+      paramName={PODIUM}
     />
   );
 };

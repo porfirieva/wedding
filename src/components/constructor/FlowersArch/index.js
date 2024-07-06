@@ -1,12 +1,10 @@
-import { useLocation, useSearchParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 import { FLOWERS_ARCH, LOCATION } from "../store/constants";
 import Section from "../Section";
-import { getStepData, updateSearchParams } from "../utils";
+import { getStepData } from "../utils";
 
 const FlowersArch = () => {
-  const [, setSearchParams] = useSearchParams();
-
   const { search } = useLocation();
 
   const params = new URLSearchParams(search);
@@ -14,17 +12,11 @@ const FlowersArch = () => {
 
   const data = getStepData(location, FLOWERS_ARCH);
 
-  const handleClick = (el) => {
-    const { params } = updateSearchParams(search, FLOWERS_ARCH, el.id);
-
-    setSearchParams(params);
-  };
-
   return (
     <Section
       title="Выберите цветы для арки"
-      onClick={(el) => handleClick(el)}
       resetTitle={"Без цветов"}
+      paramName={FLOWERS_ARCH}
       data={data.images}
     />
   );
